@@ -1,20 +1,17 @@
-\#!/bin/bash
+
+# Practica de Investigación: primeros pasos con Vagrant
 
 
 
-\# Practica de Investigación: primeros pasos con Vagrant
+## ASIR2/IWEB - Carla González Da Costa
 
 
 
-\## ASIR2/IWEB - Carla González Da Costa
+### 02/10/2026
 
 
 
-\### 02/10/2026
-
-
-
-\#### Parte A: Investigación y Conceptos
+#### Parte A: Investigación y Conceptos
 
 
 
@@ -64,7 +61,7 @@ config.vm.hostname = "servidor-tu-nombre"
 
 
 
-2\. Aprovisionamiento
+2. Aprovisionamiento
 
 
 
@@ -81,7 +78,7 @@ Existen dos formas de indicar el script: inline y path.
 
 
 * inline: el script se escribe dentro del vagrantfile.
-* 
+  
 * path: el script está escrito dentro de un archivo diferente a vagrantfile, pero ese archivo está en la misma carpeta que vagrantfile.
 
 
@@ -92,7 +89,7 @@ Debemos ejecutar el comando ‘vagrant provision’ para que haga el cambio del 
 
 
 
-3\. Interfaces y redes
+3. Interfaces y redes
 
 
 
@@ -132,33 +129,31 @@ Añadir la segunda interfaz no elimina la NAT ya que cada una se configura en un
 
 * eth0: Es la interfaz NAT y recibe una IP por DHCP. Es la interfaz por defecto y la que permite que la VM navegue por Internet.
 
-
-
 * eth1: Es la red privada y le he asignado una IP estática 192.168.56.10.
 
-\[Esquema de la arquitectura](image\_vagrant/esquema.png)
+[Esquema de la arquitectura](image\_vagrant/esquema.png)
 
 
 
-4\. Órdenes y carpeta compartida
+4. Órdenes y carpeta compartida
 
 
 
-\[Tabla](image\_vagrant/tabla.png)
+[Tabla](image\_vagrant/tabla.png)
 
 
 
 
 
-\#### Parte B: Mi primera máquina en Vagrant
+#### Parte B: Mi primera máquina en Vagrant
 
 
 
-\[Conexión ssh](image\_vagrant/ssh.png)
+[Conexión ssh](image\_vagrant/ssh.png)
 
 
 
-\#### Parte C: Completa el vagrantfile
+#### Parte C: Completa el vagrantfile
 
 
 
@@ -166,11 +161,11 @@ Una vez alterado el archivo vagrantfile con la información que me da el apartad
 
 
 
-\[Imagen interfaces](image\_vagrant/ip\_a\_nat\_interna.png)
+[Imagen interfaces](image\_vagrant/ip\_a\_nat\_interna.png)
 
 
 
-\#### Parte D: Aprovisiona Apache
+#### Parte D: Aprovisiona Apache
 
 
 
@@ -178,11 +173,11 @@ Después de haber creado contenido en el archivo script.sh, creado anteriormente
 
 
 
-\[Imagen comprobación navegador](image\_vagrant/captura\_navegador.png)
+[Imagen comprobación navegador](image\_vagrant/captura\_navegador.png)
 
 
 
-\[Imagen apache activo](image\_vagrant/apache\_activo.png)
+[Imagen apache activo](image\_vagrant/apache\_activo.png)
 
 
 
