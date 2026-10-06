@@ -102,28 +102,17 @@ En vagrantfile podemos añadir una segunda interfaz utilizando una red privada. 
 
 
 | Tipo | ¿Con quién puede comunicarse? | Función |
-
 | --- | --- | --- |
-
 | Red NAT | Internet y servicios mediante el anfitrión | Dar Internet a la VM |
-
 | Red interna | Con otras máquinas conectadas a esa misma red interna | Crear una red aislada entre vms |
-
 | host-only | Anfitrión y otras máquinas en la misma red privada | host <-> vm |
-
 | Red pública | Con máquinas de la red física a la que está conectada el host | La vm aparecerá como un equipo de la red |
-
-
-
 
 
 La red interna solo permite comunicación entre VMs que estén conectadas a la misma red. La red Host-Only, en cambio, permite comunicación entre las VMs y el anfitrión.
 
 
-
 Añadir la segunda interfaz no elimina la NAT ya que cada una se configura en una interfaz diferente. Por otro lado, el reenvío de puertos no crea ninguna interfaz de red adicional. Es simplemente una regla de redirección de tráfico.
-
-
 
 
 
@@ -134,32 +123,20 @@ Añadir la segunda interfaz no elimina la NAT ya que cada una se configura en un
 [Esquema de la arquitectura](image\_vagrant/esquema.png)
 
 
-
 4. Órdenes y carpeta compartida
-
-
 
 [Tabla](image\_vagrant/tabla.png)
 
 
 
-
-
 #### Parte B: Mi primera máquina en Vagrant
-
-
 
 [Conexión ssh](image\_vagrant/ssh.png)
 
 
-
 #### Parte C: Completa el vagrantfile
 
-
-
 Una vez alterado el archivo vagrantfile con la información que me da el apartado C, entro por ssh en la vm y compruebo las interfaces de red y el hostname.
-
-
 
 [Imagen interfaces](image\_vagrant/ip\_a\_nat\_interna.png)
 
@@ -167,15 +144,9 @@ Una vez alterado el archivo vagrantfile con la información que me da el apartad
 
 #### Parte D: Aprovisiona Apache
 
-
-
 Después de haber creado contenido en el archivo script.sh, creado anteriormente, donde hemos dicho que debe instalar apache, activarlo cuando inice y escribir una página de inicio sencilla. Con el comando vagrant provision le hemos dicho a la máquina que hemos modificado el aprovisionamiento, y debe volver a ejecutarlo para conocer las actualizaciones.
 
-
-
 [Imagen comprobación navegador](image\_vagrant/captura\_navegador.png)
-
-
 
 [Imagen apache activo](image\_vagrant/apache\_activo.png)
 
