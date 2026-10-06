@@ -1,3 +1,7 @@
+\#!/bin/bash
+
+
+
 \# Practica de Investigación: primeros pasos con Vagrant
 
 
