@@ -25,62 +25,37 @@ Vagrant es una herramienta que sirve para automatizar las configuraciones de las
 
 Distinguir los diferentes conceptos:
 
-
-
 * Anfitrión: Es el ordenador físico con el que se está trabajando y donde se van a crear las VMs, es decir, el host.
-
-
 
 * Proveedor de virtualización: Es el software a partir del cuál vamos a crear las máquinas virtuales, como VirtualBox o VMware.
 
-
-
 * Box: Es la imagen base que utiliza Vagrant para crear una máquina virtual. Por ejemplo, una box de Ubuntu.
 
-
-
 * Máquina virtual (VM): Es la máquina que se crea en el anfitrión por el proveedor de virtualización.
-
 
 
 Vagrant está escrito en Ruby.
 
 
-
 Del archivo inicial he añadido estas líneas de comando para poder tener una red privada con IP estática, añadir el hostname y configurar el archivo script.sh, donde más tarde he añadido un provisionamiento.
 
 config.vm.hostname = "servidor-tu-nombre"
-
-&#x20; config.vm.network "forwarded\_port", guest: 80, host: 8080, host\_ip: "127.0.0.1"
-
-&#x20; config.vm.network "private\_network", ip: "192.168.56.10"
-
-&#x20; config.vm.provision "shell", path: "script.sh"
-
-
-
+config.vm.network "forwarded\_port", guest: 80, host: 8080, host\_ip: "127.0.0.1"
+config.vm.network "private\_network", ip: "192.168.56.10"
+config.vm.provision "shell", path: "script.sh"
 
 
 2. Aprovisionamiento
 
-
-
 Un provisioner es el mecanismo que usa Vagrant para configurar automáticamente una máquina virtual después de crearla. Por ejemplo, puedes decirle a Vagrant que después de crear la VM, instale Apache, por lo tanto, lo hará.
-
 
 
 El script se ejecuta dentro de la máquina virtual, es por eso que podrá instalar apache, ya que el comando sudo apt install apache2, se va a ejecutar en la máquina. Además, se lanza cuando ejecutamos el comando vagrant up, Vagrant va a crear e iniciar la máquina y luego va a ejecutar el provisionamiento.
 
-
-
 Existen dos formas de indicar el script: inline y path.
 
-
-
 * inline: el script se escribe dentro del vagrantfile.
-  
 * path: el script está escrito dentro de un archivo diferente a vagrantfile, pero ese archivo está en la misma carpeta que vagrantfile.
-
 
 
 Si modificamos el archivo vagrantfile después de haber hecho un vagrant up, la modificación no se va a ejecutar automáticamente, solamente por guardar ese archivo.
@@ -91,11 +66,7 @@ Debemos ejecutar el comando ‘vagrant provision’ para que haga el cambio del 
 
 3. Interfaces y redes
 
-
-
 Por defecto, Vagrant utiliza una red NAT y la utiliza para que la VM tenga acceso a Internet utilizando la conexión del host.
-
-
 
 En vagrantfile podemos añadir una segunda interfaz utilizando una red privada. Deberíamos añadir al archivo esta línea de comandos: config.vm.network "private\_network", ip: "192.168.56.10" . En este caso, le hemos asignado como IP fija 192.168.56.10
 
@@ -111,13 +82,9 @@ En vagrantfile podemos añadir una segunda interfaz utilizando una red privada. 
 
 La red interna solo permite comunicación entre VMs que estén conectadas a la misma red. La red Host-Only, en cambio, permite comunicación entre las VMs y el anfitrión.
 
-
 Añadir la segunda interfaz no elimina la NAT ya que cada una se configura en una interfaz diferente. Por otro lado, el reenvío de puertos no crea ninguna interfaz de red adicional. Es simplemente una regla de redirección de tráfico.
 
-
-
 * eth0: Es la interfaz NAT y recibe una IP por DHCP. Es la interfaz por defecto y la que permite que la VM navegue por Internet.
-
 * eth1: Es la red privada y le he asignado una IP estática 192.168.56.10.
 
 [Esquema de la arquitectura](image\_vagrant/esquema.png)
