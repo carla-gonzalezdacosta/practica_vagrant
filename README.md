@@ -40,8 +40,11 @@ Vagrant está escrito en Ruby.
 Del archivo inicial he añadido estas líneas de comando para poder tener una red privada con IP estática, añadir el hostname y configurar el archivo script.sh, donde más tarde he añadido un provisionamiento.
 
 config.vm.hostname = "servidor-tu-nombre"
+
 config.vm.network "forwarded\_port", guest: 80, host: 8080, host\_ip: "127.0.0.1"
+
 config.vm.network "private\_network", ip: "192.168.56.10"
+
 config.vm.provision "shell", path: "script.sh"
 
 
